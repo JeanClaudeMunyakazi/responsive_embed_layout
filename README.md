@@ -93,7 +93,9 @@ Licensed under the **MIT License**,  free for commercial and non-commercial use.
 ##  Author
 
 **Jean-Claude Munyakazi**
-* Website: [https://munyakazi.org](https://munyakazi.org)
-* GitHub: [JeanClaudeMunyakazi](https://github.com/JeanClaudeMunyakazi)
+
+* [responsive_embed_layout Overview Blog](https://munyakazi.org/iso-iec-27002/)
+* [Live Demo](https://jeanclaudemunyakazi.github.io/responsive_embed_layout/)
+* [Author Portfolio](https://munyakazi.org)
 
 > “Built from scratch to look good everywhere.”
