@@ -59,11 +59,12 @@ responsive_embed_page/
    `https://your-username.github.io/responsive_embed_layout/`
 
 2. **Paste this code into your WordPress HTML widget:**
-
+````
 html
 <iframe src="https://your-username.github.io/responsive_embed_layout/"
         width="100%" height="1200" style="border:none;">
 </iframe>
+````
 
 3. You can also pest the full code on the HTML Widget 
 
