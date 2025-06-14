@@ -19,8 +19,8 @@ The goal was to create a reusable visual component that:
 
 
 responsive_embed_page/
-├── index.html   # Full responsive HTML page
-├── README.md    # You are here
+* ├── index.html   # Full responsive HTML page
+* ├── README.md    # You are here
 
 
 
@@ -86,14 +86,14 @@ You can adapt this layout for:
 
 ##  License
 
-Licensed under the **MIT License**  free for commercial and non-commercial use.
+Licensed under the **MIT License**,  free for commercial and non-commercial use.
 
 ---
 
 ##  Author
 
 **Jean-Claude Munyakazi**
-Website: [https://munyakazi.org](https://munyakazi.org)
-GitHub: [JeanClaudeMunyakazi](https://github.com/JeanClaudeMunyakazi)
+* Website: [https://munyakazi.org](https://munyakazi.org)
+* GitHub: [JeanClaudeMunyakazi](https://github.com/JeanClaudeMunyakazi)
 
 > “Built from scratch to look good everywhere.”
