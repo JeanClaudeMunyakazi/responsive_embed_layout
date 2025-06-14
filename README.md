@@ -18,9 +18,9 @@ The goal was to create a reusable visual component that:
 
 
 
-responsive\_embed\_layout/
-├── index.html      # Fully self-contained responsive layout
-├── README.md       # Technical documentation
+responsive_embed_page/
+├── index.html   # Full responsive HTML page
+├── README.md    # You are here
 
 
 
