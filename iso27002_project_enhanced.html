@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO/IEC 27002 Visual Diagram Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e6ed;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(45deg, #0F1735, #1e3a8a);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #64ffda, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #b0bec5;
+            margin-bottom: 30px;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .phase-section {
+            background: rgba(15, 23, 53, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-left: 4px solid #64ffda;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .phase-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(100, 255, 218, 0.2);
+        }
+
+        .phase-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #64ffda;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .phase-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #64ffda, #00bcd4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #0F1735;
+            font-weight: bold;
+        }
+
+        .phase-content {
+            color: #b0bec5;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        /* Mobile optimization for feature cards */
+        @media (max-width: 600px) {
+        .feature-card {
+            padding: 15px;
+        }
+        }
+
+        .feature-card {
+            background: rgba(30, 58, 138, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .feature-title {
+            color: #64ffda;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #0F1735;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border: 1px solid #1e3a8a;
+            position: relative;
+        }
+
+        .code-header {
+            background: #1e3a8a;
+            color: #64ffda;
+            padding: 10px 20px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 10px 10px 0 0;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .code-block pre {
+            color: #e0e6ed;
+            background: #0F1735;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: inherit;
+            background: inherit;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .deployment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        /* Mobile optimization for deployment cards */
+        @media (max-width: 600px) {
+        .deployment-card {
+            padding: 20px;
+        }
+        }
+
+        .deployment-card {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(30, 58, 138, 0.2));
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .deployment-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .deployment-title {
+            color: #64ffda;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .deployment-icon {
+            width: 24px;
+            height: 24px;
+            background: #64ffda;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0F1735;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(45deg, #1e3a8a, #0F1735);
+            border-radius: 20px;
+            padding: 50px 20px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+            border: 2px solid rgba(100, 255, 218, 0.3);
+            box-shadow: 0 10px 40px rgba(100, 255, 218, 0.1);
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #64ffda;
+            margin-bottom: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #64ffda, #00bcd4);
+            color: #0F1735;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(100, 255, 218, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: #64ffda;
+            border: 2px solid #64ffda;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            background: rgba(30, 58, 138, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #64ffda;
+            display: block;
+        }
+
+        .stat-label {
+            color: #b0bec5;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .phase-section {
+                padding: 20px;
+            }
+            
+            .phase-title {
+                font-size: 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .live-demo {
+            background: #0F1735;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #64ffda;
+        }
+
+        .live-demo h3 {
+            color: #64ffda;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .control-item {
+            background-color: #0F1735;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 1px solid #1e3a8a;
+            transition: all 0.3s ease;
+        }
+
+        .control-item:hover {
+            border-color: #64ffda;
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+        }
+
+        .control-id {
+            color: #64ffda;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .control-title {
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">ISO/IEC 27002 Visual Diagram</h1>
+                <p class="hero-subtitle">From Scratch to Live: Building and Deploying a Modern Security Controls Visualization</p>
+                <div class="tech-stack">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">Responsive Design</span>
+                    <span class="tech-badge">GitHub Pages</span>
+                    <span class="tech-badge">No Framework</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="phase-section">
+            <h2 class="phase-title">
+                <div class="phase-icon">📋</div>
+                Project Overview
+            </h2>
+            <div class="phase-content">
+                <p>This project documents the complete journey of building a fully responsive, dark-themed HTML/CSS diagram to visualize the 93 security controls defined in ISO/IEC 27002:2022. The goal was to create a clean, readable, and reusable component for blogs, internal SharePoint Wiki, or Power Page Wiki Platform environments.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">93</span>
+                        <span class="stat-label">Security Controls</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Control Domains</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">External Libraries</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Pure HTML/CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 1: Foundation -->
+        <div class="phase-section">
+            <h2 class="phase-title">
+                <div class="phase-icon">1</div>
+                Phase 1: Laying the Foundation, HTML Structure
+            </h2>
+            <div class="phase-content">
+                <p>I began with a structured approach, creating a semantic HTML layout that would serve as the backbone for the entire visualization.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-title"> Structure Components</div>
+                        <ul>
+                            <li>Header section with title and subtitle</li>
+                            <li>Root node for visual anchoring</li>
+                            <li>Four main domain containers</li>
+                            <li>Individual control items</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title"> Control Domains</div>
+                        <ul>
+                            <li>Organizational Controls (37)</li>
+                            <li>People Controls (8)</li>
+                            <li>Physical Controls (14)</li>
+                            <li>Technological Controls (34)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="live-demo">
+                    <h3>Live Example: Control Item Structure</h3>
+                    <div class="control-item">
+                        <div class="control-id">5.1</div>
+                        <div class="control-title">Policies for information security</div>
+                    </div>
+                    <div class="control-item">
+                        <div class="control-id">5.2</div>
+                        <div class="control-title">Information security roles and responsibilities</div>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">HTML Structure</div>
+                    <pre><code>&lt;div class="control-item" style="background-color:#0F1735; color:#ffffff; padding:10px; border-radius:5px;"&gt;
+  &lt;div class="control-id"&gt;5.1&lt;/div&gt;
+  &lt;div class="control-title"&gt;Policies for information security&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: Styling -->
+        <div class="phase-section">
+            <h2 class="phase-title">
+                <div class="phase-icon">2</div>
+                Phase 2: Styling with CSS, Dark Mode and Responsive Design
+            </h2>
+            <div class="phase-content">
+                <p>The styling phase focused on creating a modern, accessible dark theme with responsive capabilities across all device sizes.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-title"> Design Decisions</div>
+                        <ul>
+                            <li>Dark theme with #0F1735 background</li>
+                            <li>Domain-specific color coding</li>
+                            <li>CSS Grid for layout management</li>
+                            <li>Smooth transitions and hover effects</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title"> Responsive Strategy</div>
+                        <ul>
+                            <li>Desktop: 2-column grid layout</li>
+                            <li>Tablet: Adaptive card stacking</li>
+                            <li>Mobile: Single-column layout</li>
+                            <li>Scrollable domain containers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">Responsive CSS</div>
+                    <pre><code>@media (max-width: 768px) {
+  .domains-grid {
+    grid-template-columns: 1fr;
+    background-color: #0F1735;
+    color: #ffffff;
+  }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: Testing -->
+        <div class="phase-section">
+            <h2 class="phase-title">
+                <div class="phase-icon">3</div>
+                Phase 3: Testing Responsiveness
+            </h2>
+            <div class="phase-content">
+                <p>Comprehensive testing across multiple devices and screen sizes ensured optimal user experience everywhere.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-title"> Desktop (1200px+)</div>
+                        <p>All domains display side by side in a clean two-column layout with optimal spacing.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title"> Tablet (768px-1200px)</div>
+                        <p>Layout adapts to stack cards while maintaining visual hierarchy and readability.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title"> Mobile (768px)</div>
+                        <p>Each domain becomes full-width with vertical scrolling for easy navigation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4: Hosting -->
+        <div class="phase-section">
+            <h2 class="phase-title">
+                <div class="phase-icon">4</div>
+                Phase 4: Hosting It Live with GitHub Pages
+            </h2>
+            <div class="phase-content">
+                <p>Deployment to GitHub Pages provides a stable, public URL for integration across multiple platforms.</p>
+                
+                <div class="code-block">
+                    <div class="code-header">Deployment Steps</div>
+                    <pre><code>1. Rename file to index.html
+2. Push to GitHub repository
+3. Enable GitHub Pages (Settings → Pages → Source → main branch)
+4. Access via: https://your-username.github.io/iso27002_Diagram/</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 5: Integration -->
+        <div class="phase-section">
+            <h2 class="phase-title">
+                <div class="phase-icon">5</div>
+                Phase 5: Platform Integration
+            </h2>
+            <div class="phase-content">
+                <p>The diagram was designed for seamless integration across multiple enterprise platforms and content management systems.</p>
+                
+                <div class="deployment-grid">
+                    <div class="deployment-card">
+                        <div class="deployment-title">
+                            <div class="deployment-icon">W</div>
+                            WordPress
+                        </div>
+                        <p>HTML widget in Elementor or iframe embed for seamless blog integration.</p>
+                    </div>
+                    <div class="deployment-card">
+                        <div class="deployment-title">
+                            <div class="deployment-icon">S</div>
+                            SharePoint
+                        </div>
+                        <p>File Viewer web part or Embed Web Part for modern SharePoint sites.</p>
+                    </div>
+                    <div class="deployment-card">
+                        <div class="deployment-title">
+                            <div class="deployment-icon">P</div>
+                            Power Pages
+                        </div>
+                        <p>Upload as Web File and reference via Web Page templates.</p>
+                    </div>
+                    <div class="deployment-card">
+                        <div class="deployment-title">
+                            <div class="deployment-icon">T</div>
+                            Teams
+                        </div>
+                        <p>Website Tab integration for IT Governance and InfoSec channels.</p>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <div class="code-header">iframe Integration</div>
+                    <pre><code>&lt;iframe src="https://your-username.github.io/iso27002_Diagram/" 
+        width="100%" 
+        height="1200" 
+        style="border:none;"&gt;
+&lt;/iframe&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2 class="cta-title">Explore the Code</h2>
+            <p style="font-size: 1.2rem; color: #b0bec5; margin-bottom: 20px;">
+                Open source project licensed under MIT. Fork, customize, and extend for your own needs.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://jeanclaudemunyakazi.github.io/iso27002_diagram/" class="cta-button">
+                     View Live Demo
+                </a>
+                <a href="https://github.com/JeanClaudeMunyakazi/iso27002_diagram.git" class="cta-button secondary">
+                     GitHub Repository
+                </a>
+            </div>
+            <p style="margin-top: 30px; color: #64ffda; font-style: italic;">
+                "Bringing structure and clarity to ISO 27002 in modern environments"
+            </p>
+        </div>
+    </div>
+</body>
+</html>
