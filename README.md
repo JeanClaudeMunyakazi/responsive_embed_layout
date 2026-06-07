@@ -1,4 +1,4 @@
-# Responsive HTML/CSS Layout for Embedding in WordPress
+# Responsive HTML and CSS layout designed for WordPress HTML widgets and iframe embedding.
 
 This project showcases how to build a clean, responsive, dark-themed layout using only HTML and CSS, optimized for embedding in WordPress blogs via the HTML widget.
 
